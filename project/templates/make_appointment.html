@@ -3,10 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Make an appointment</title>
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            width: 200px;
+            text-align: right;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2>{{ appointment.client_name }} Спасибо за запись!</h2>
-    <p> Вы записаны на {{ appointment.date|date:"d-M-Y" }} по вопросу: {{ appointment.message|truncatechars:50 }} </p>
+    <h1>Заказать доставку</h1>
+    <form action="{% url 'appointments:make_appointment' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Ваше имя:</label>
+            <input type="text" name="client_name">
+        </div>
+        <div class="form-group">
+            <label>Наименование товара:</label>
+            <input type="text" name="message">
+        </div>
+        <div class="form-group">
+            <label>Выберите дату:</label>
+            <input type="date" name="date">
+        </div>
+        <div class="form-group">
+            <label></label> <!-- Пустая метка для кнопки -->
+            <input type="submit">
+        </div>
+    </form>
 </body>
 </html>
