@@ -7,6 +7,7 @@
     <form action="/sign/logout/" method="post">
     {% csrf_token %}
         <input type="submit" value="Выйти"> <button> <a href="/simpleapp/products/"> Смотреть все товары </a> </button>
+        <button> <a href="/appointments/"> Сделать заказ </a> </button>
     </form>
     {% if is_not_premium %}
         <button> <a href="/sign/upgrade/"> Хочу Premium!</a> </button>

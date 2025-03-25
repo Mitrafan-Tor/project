@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY') #'django-insecure-!#d#vg0zfp#qt-ww2oxko9_bk8f*o#n3j7-(*qfm^2^mmwn_-y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -155,7 +155,7 @@ STATICFILES_DIRS = [
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none' #'mandatory'
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
 
