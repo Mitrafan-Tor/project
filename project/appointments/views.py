@@ -13,7 +13,6 @@ import os
 
 # создаём функцию-обработчик с параметрами под регистрацию сигнала
 def notify_managers_appointment(sender, instance, created, **kwargs):
-    print(f"Сигнал сработал! Создана новая запись: {created}")
     subject = f'{instance.client_name} {instance.date.strftime("%d %m %Y")}'
 
     mail_managers(
