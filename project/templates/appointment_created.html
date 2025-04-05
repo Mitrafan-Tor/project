@@ -1,26 +1,12 @@
-{% extends 'flatpages/default.html' %}
-
-{% load custom_filters %}
-{# Импортируем модуль с нашим тегом #}
-{% load custom_tags %}
-
-{% block title %}
-    Запись на прием
-{% endblock title %}
-
-{% block content %}
-    <h1>Запись на прием</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="date">Дата:</label><br>
-        <input type="date" id="date" name="date"><br><br>
-
-        <label for="client_name">Имя:</label><br>
-        <input type="text" id="client_name" name="client_name"><br><br>
-
-        <label for="message">Сообщение:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-
-        <input type="submit" value="Записаться">
-    </form>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>{{ appointment.client_name }} Спасибо за запись!</h2>
+    <p> Вы записаны на {{ appointment.date|date:"d-M-Y" }} по вопросу: {{ appointment.message|truncatechars:50 }} </p>
+</body>
+</html>
