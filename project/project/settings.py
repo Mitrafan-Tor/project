@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.yandex',
-    'appointments',
+    'appointment.apps.AppointmentConfig',
+
 ]
 
 SITE_ID = 1
@@ -167,9 +168,15 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # пароль от по
 EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-ADMINS = [
+# ADMINS = [
+#     ('дмитрий', 'dim.ka77@mail.ru'),
+#     # список всех админов в формате ('имя', 'их почта')
+# ]
+
+MANAGERS = [
     ('дмитрий', 'dim.ka77@mail.ru'),
-    # список всех админов в формате ('имя', 'их почта')
 ]
+
+
 SERVER_EMAIL = os.getenv('SERVER_EMAIL')  # это будет у нас вместо аргумента FROM в массовой рассылке
 DEFAULT_FROM_EMAIL = os.getenv('SERVER_EMAIL')

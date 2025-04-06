@@ -7,6 +7,6 @@ urlpatterns = [
    path('simpleapp/', include('simpleapp.urls')),
    path('sign/', include('sign.urls')),
    path('accounts/', include('allauth.urls')),
-   path('appointments/', include(('appointments.urls'), namespace='appointments')),
+   path('appointment/', include(('appointment.urls'), namespace='appointment')),
    path('', include('protect.urls')),
 ]
