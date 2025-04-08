@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.yandex',
     'appointment.apps.AppointmentConfig',
+    'django_apscheduler',
 
 ]
 
@@ -180,3 +181,6 @@ MANAGERS = [
 
 SERVER_EMAIL = os.getenv('SERVER_EMAIL')  # это будет у нас вместо аргумента FROM в массовой рассылке
 DEFAULT_FROM_EMAIL = os.getenv('SERVER_EMAIL')
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
