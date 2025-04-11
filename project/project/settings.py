@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'protect',
     'sign',
 
+    'board',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -169,10 +171,10 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # пароль от по
 EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# ADMINS = [
-#     ('дмитрий', 'dim.ka77@mail.ru'),
-#     # список всех админов в формате ('имя', 'их почта')
-# ]
+ADMINS = [
+    ('дмитрий', 'dim.ka77@mail.ru'),
+    # список всех админов в формате ('имя', 'их почта')
+]
 
 MANAGERS = [
     ('дмитрий', 'dim.ka77@mail.ru'),
@@ -184,3 +186,9 @@ DEFAULT_FROM_EMAIL = os.getenv('SERVER_EMAIL')
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

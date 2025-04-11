@@ -9,4 +9,5 @@ urlpatterns = [
    path('accounts/', include('allauth.urls')),
    path('appointment/', include(('appointment.urls'), namespace='appointment')),
    path('', include('protect.urls')),
+   path('board/', include('board.urls')),
 ]

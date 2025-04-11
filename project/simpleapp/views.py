@@ -9,6 +9,7 @@ from .forms import ProductForm
 from .models import Product
 
 
+
 class ProductsList(PermissionRequiredMixin, ListView):
     model = Product
     ordering = 'name'
