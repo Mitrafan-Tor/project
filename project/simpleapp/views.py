@@ -3,6 +3,24 @@ from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.core.cache import cache # импортируем наш кэш
+from .models import Product
+
+class ProductDetailView(DetailView):
+   template_name = 'sample_app/product_detail.html'
+   queryset = Product.objects.all()
+
+   def get_object(self, *args, **kwargs): # переопределяем метод получения объекта, как ни странно
+
+      obj = cache.get(f'product-{self.kwargs["pk"]}', None) # кэш очень похож на словарь, и метод get действует так же. Он забирает значение по ключу, если его нет, то забирает None.
+
+      #если объекта нет в кэше, то получаем его и записываем в кэш
+
+      if not obj:
+         obj = super().get_object(queryset=self.queryset)
+         cache.set(f'product-{self.kwargs["pk"]}', obj)
+
+      return obj
 
 from .filters import ProductFilter
 from .forms import ProductForm
